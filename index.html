@@ -22,7 +22,7 @@ layout: default
     {% endfor %}
 
     {% for post in site.posts offset:1 %}
-      <li class="p-1 pt-3 bs-s bw-0 bbw-1p bc-l.8">
+      <li class="p-1 pt-3 bs-s bw-0 bbw-1p bc-l.8 bbw-0:lc">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
         <h2>
@@ -33,7 +33,5 @@ layout: default
       </li>
     {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

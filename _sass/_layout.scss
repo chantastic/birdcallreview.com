@@ -285,6 +285,7 @@ html {
 .bbw-1p { border-bottom-width: 1px }
 .btw-1p { border-top-width: 1px }
 .bc-l\.8 { border-color: hsl(0, 0%, 80%) }
+.c-l\.8 { color: hsl(0, 0%, 80%) }
 .m-0 { margin: 0 }
 .bs-3p { border-radius: 3px }
 .d-ib { display: inline-block }
@@ -294,3 +295,5 @@ html {
 /* theme */
 .ff-normal { font-family: 'Vollkorn', serif; font-weight: 400; }
 .ff-bold { font-family: 'Lato', sans-serif; font-weight: 700; }
+
+.bbw-0\:lc { border-bottom-width: 0 }
