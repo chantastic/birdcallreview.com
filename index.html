@@ -2,32 +2,34 @@
 layout: default
 ---
 
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
+<div class="home bs-s bw-0 btw-1p bc-l.8">
 
   <ul class="post-list">
     {% for post in site.posts limit:1 %}
-      <li>
+      <li class="p-1 pt-3 bs-s bw-0 bbw-1p bc-l.8">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <a class="post-link c-red ff-bold" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
 
-        <audio src="{{ post.mp3 }}" controls="controls">
+        <p class="ff-normal">{{ post.content }}</p>
+
+        <audio src="{{ post.mp3 }}" class="w-100%" controls="controls">
           Your browser does not support the <code>audio</code> element.
         </audio>
       </li>
     {% endfor %}
 
     {% for post in site.posts offset:1 %}
-      <li>
+      <li class="p-1 pt-3 bs-s bw-0 bbw-1p bc-l.8">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <a class="post-link c-red ff-bold" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+
+        <p class="ff-normal">{{ post.content }}</p>
       </li>
     {% endfor %}
   </ul>

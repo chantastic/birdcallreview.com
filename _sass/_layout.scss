@@ -240,3 +240,57 @@
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+.c-red { color: rgb(197, 45, 47) !important }
+.btc-red { border-top-color: rgb(197, 45, 47) }
+.gc-red { background-color: rgb(197, 45, 47) }
+.bc-red { border-color: rgb(197, 45, 47) }
+.bs-s { border-style: solid }
+.bw-0 { border-width: 0 }
+.bw-1p { border-width: 1px }
+.ta-c { text-align: center }
+.w-100\% { width: 100% }
+.mb-1 { margin-bottom: 1em }
+.mb-2 { margin-bottom: 2em }
+.p-1 { padding: 1em }
+.pt-3 { padding-top: 3em }
+.bbw-1p { border-bottom-width: 1px }
+.btw-1p { border-top-width: 1px }
+.bc-l\.8 { border-color: hsl(0, 0%, 80%) }
+.m-0 { margin: 0 }
+.bs-3p { border-radius: 3px }
+.d-ib { display: inline-block }
+
+.fs-24p { font-size: 24px }
+
+/* theme */
+.ff-normal { font-family: 'Vollkorn', serif; font-weight: 400; }
+.ff-bold { font-family: 'Lato', sans-serif; font-weight: 700; }

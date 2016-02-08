@@ -1,19 +1,25 @@
 ---
 layout: default
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post bs-s bw-0 btw-1p bc-l.8" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+  <div class="p-1 pt-3">
+    <header class="post-header">
+      <p class="post-meta m-0" style="margin-bottom: 9px"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+      <h2 class="post-title c-red ff-bold fs-24p" style="letter-spacing: 0" itemprop="name headline">{{ page.title }}</h2>
+    </header>
 
-  <div class="post-content" itemprop="articleBody">
-    <audio src="{{ page.mp3 }}" controls="controls">
-      Your browser does not support the <code>audio</code> element.
-    </audio>
+    <div class="post-content" itemprop="articleBody">
+      {{ content }}
 
-    {{ content }}
+      <audio src="{{ page.mp3 }}" controls="controls" class="w-100%">
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+    </div>
+  </div>
+
+  <div class="ta-c">
+    <a href="{{ site.baseurl }}" class="bs-s bw-1p bc-red bs-3p p-1 c-red mb-1 d-ib">All Episodes</a>
   </div>
 
 </article>
