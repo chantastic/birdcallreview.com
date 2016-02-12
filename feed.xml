@@ -23,8 +23,8 @@ layout: null
     <itunes:category text="Science &amp; Medicine">
       <itunes:category text="Natural Sciences" />
     </itunes:category>
-    <itunes:explicit text="yes" />
-    {% for post in site.posts limit:10 %}
+    <itunes:explicit>yes</itunes:explicit>
+    {% for post in site.posts %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
