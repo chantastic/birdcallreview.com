@@ -1,19 +1,37 @@
 ---
 layout: null
 ---
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
   <channel>
+    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
     <title>{{ site.title | xml_escape }}</title>
     <description>{{ site.description | xml_escape }}</description>
     <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <copyright>&#x2117; &amp; &#xA9; 2016 Jeremy Ricketts &amp; Michael Chan</copyright>
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
+    <itunes:subtitle>Jeremy &amp; Michael Review Bird Calls</itunes:subtitle>
+    <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
+    <itunes:summary>{{ site.description | xml_escape }}</itunes:summary>
+    <itunes:owner>
+      <itunes:name>Jeremy Ricketts &amp; Michael Chan</itunes:name>
+      <itunes:email>mijoch+bcr@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="http://birdcallreview.com/BCR.png" />
+    <itunes:category text="Science &amp; Medicine">
+      <itunes:category text="Natural Sciences" />
+    </itunes:category>
     {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
+        <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:summary><![CDATA[{{ post.content }}]]></itunes:summary>
+        <itunes:image href="http://birdcallreview.com/BCR.png" />
+        <itunes:duration>{{ post.duration }}</itunes:duration>
+        <enclosure url="{{ post.mp3 }}" length="{{post.filesize}}" type="audio/x-mp3" />
         <description>{{ post.content | xml_escape }}</description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
