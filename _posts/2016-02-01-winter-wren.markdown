@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Wintor Wren"
+title:  "Winter Wren"
 date:   2016-02-05 12:00:00 -0800
 mp3: "http://episodes.birdcallreview.com/BCR3.mp3"
 filesize: 29581886
