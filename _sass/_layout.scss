@@ -11,16 +11,27 @@
 }
 
 .site-title {
-    font-size: 26px;
+    font-size: 60px;
     font-weight: 300;
-    line-height: 56px;
+    line-height: 1em;
     letter-spacing: -1px;
     margin-bottom: 0;
-    float: left;
-
-    &,
-    &:visited {
-        color: $grey-color-dark;
+    span {
+        color: $grey-color;
+        letter-spacing: 13px;
+        text-transform: uppercase;
+        display: block;
+        font-size: 25px;
+        line-height: 1em;
+        font-weight: 700;
+        &:before {
+            content: "~";
+            font-weight: 400;
+        }
+        &:after {
+            content: "~";
+            font-weight: 400;
+        }
     }
 }
 
@@ -270,9 +281,13 @@ html {
 }
 
 .c-red { color: rgb(197, 45, 47) !important }
+.c-grey { color: $grey-color !important }
+.c-darkgrey { color: $grey-color-dark !important }
 .btc-red { border-top-color: rgb(197, 45, 47) }
 .gc-red { background-color: rgb(197, 45, 47) }
+.gc-lightgrey { background-color: $grey-color-light }
 .bc-red { border-color: rgb(197, 45, 47) }
+.bc-lightgrey { border-color: $grey-color-light }
 .bs-s { border-style: solid }
 .bw-0 { border-width: 0 }
 .bw-1p { border-width: 1px }
@@ -280,6 +295,8 @@ html {
 .w-100\% { width: 100% }
 .mb-1 { margin-bottom: 1em }
 .mb-2 { margin-bottom: 2em }
+.mt-1 { margin-top: 1em }
+.mt-2 { margin-top: 2em }
 .p-1 { padding: 1em }
 .pt-3 { padding-top: 3em }
 .bbw-1p { border-bottom-width: 1px }
@@ -289,12 +306,15 @@ html {
 .m-0 { margin: 0 }
 .bs-3p { border-radius: 3px }
 .d-ib { display: inline-block }
-.px_\.5 > * { padding-left: .5em; padding-right: .5em }
+.px_1 > * { padding-left: 1em; padding-right: 1em }
+.py_\.5 > * { padding-top: .5em; padding-bottom: .5em }
+.mx_\.5 > * { margin-left: .5em; margin-right: .5em }
 
 .fs-24p { font-size: 24px }
 
 /* theme */
 .ff-normal { font-family: 'Vollkorn', serif; font-weight: 400; }
-.ff-bold { font-family: 'Lato', sans-serif; font-weight: 700; }
+.ff-bold { font-family: 'Vollkorn', serif; font-weight: 700; }
+.ff-sans { font-family: 'Lato', sans-serif; font-weight: 300; }
 
 .bbw-0\:lc { border-bottom-width: 0 }

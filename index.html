@@ -13,7 +13,9 @@ layout: default
           <a class="post-link c-red ff-bold" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
 
-        <p class="ff-normal">{{ post.content }}</p>
+        <div class="ff-sans">
+          {{ post.content }}
+        </div>
 
         <audio src="{{ post.mp3 }}" class="w-100%" controls="controls">
           Your browser does not support the <code>audio</code> element.
