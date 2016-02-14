@@ -19,7 +19,7 @@ layout: null
       <itunes:name>Jeremy Ricketts &amp; Michael Chan</itunes:name>
       <itunes:email>mijoch+bcr@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:image href="http://birdcallreview.com/BCR.png" />
+    <itunes:image href="http://birdcallreview.com/img/logo.png" />
     <itunes:category text="Science &amp; Medicine">
       <itunes:category text="Natural Sciences" />
     </itunes:category>
@@ -30,7 +30,7 @@ layout: null
         <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
         <itunes:subtitle></itunes:subtitle>
         <itunes:summary><![CDATA[{{ post.content }}]]></itunes:summary>
-        <itunes:image href="http://birdcallreview.com/BCR.png" />
+        <itunes:image href="http://birdcallreview.com/img/logo.png" />
         <itunes:duration>{{ post.duration }}</itunes:duration>
         <enclosure url="{{ post.mp3 }}" length="{{post.filesize}}" type="audio/x-mp3" />
         <description>{{ post.content | xml_escape }}</description>
