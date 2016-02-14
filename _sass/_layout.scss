@@ -31,6 +31,7 @@
         &:after {
             content: "~";
             font-weight: 400;
+            letter-spacing: 0; //centers it under Bird Call
         }
     }
 }
