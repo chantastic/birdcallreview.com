@@ -8,4 +8,4 @@ duration: 2517
 categories: 
 ---
 
-Jeremy and Michael review the Northern Cardinal and discuss the diarhetic effect of coffee, travel-inflicted constipation, Sting, why people love Chic-fil-A, the woman in the Carlsbad Lagoon, dying do what you love, and hoveboards in 2015.
+Jeremy and Michael review the Northern Cardinal and discuss the diuretic effect of coffee, travel-inflicted constipation, Sting, why people love Chic-fil-A, the woman in the Carlsbad Lagoon, dying do what you love, and hoverboards in 2016.

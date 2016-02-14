@@ -8,4 +8,4 @@ duration: 2590
 categories: 
 ---
 
-Jeremy and Michael review the Willow Ptarmigan and discuss Sting (again), coffee (again), judging and being judged in coffee shops, the losses and gains of hair in your 30s, Claim Jumper, fruitcake, meatloaf, spounges, asparagus pee, dictating your phon number, de facto traffic laws, and insurance nonsense.
+Jeremy and Michael review the Willow Ptarmigan and discuss Sting (again), coffee (again), judging and being judged in coffee shops, the losses and gains of hair in your 30's, Claim Jumper, fruitcake, meatloaf, sponges, asparagus pee, dictating your phone number, de facto traffic laws, and insurance nonsense.
