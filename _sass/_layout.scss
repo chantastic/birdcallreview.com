@@ -35,6 +35,11 @@
         }
     }
 }
+.site-desc {
+    max-width: 460px;
+    margin:0 auto;
+    padding: 0 1em;
+}
 
 .site-nav {
     float: right;
@@ -315,6 +320,7 @@ html {
 .mx_\.2 > * { margin-left: .2em; margin-right: .2em }
 
 .fs-24p { font-size: 24px }
+.fs-i { font-style: italic;}
 
 /* theme */
 .ff-normal { font-family: 'Vollkorn', serif; font-weight: 400; }
