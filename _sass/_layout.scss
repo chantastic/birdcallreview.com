@@ -309,7 +309,10 @@ html {
 .d-ib { display: inline-block }
 .px_1 > * { padding-left: 1em; padding-right: 1em }
 .py_\.5 > * { padding-top: .5em; padding-bottom: .5em }
+.px_\.75 > * { padding-left: .75em; padding-right: .75em }
+.px_\.25 > * { padding-left: .25em; padding-right: .25em }
 .mx_\.5 > * { margin-left: .5em; margin-right: .5em }
+.mx_\.25 > * { margin-left: .25em; margin-right: .25em }
 
 .fs-24p { font-size: 24px }
 
