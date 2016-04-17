@@ -2,7 +2,7 @@
 layout: post
 title:  "Great Blue Heron"
 date:   2016-03-30 12:00:00 -0800
-mp3: "http://episodes.birdcallreview.com/9-wood-thrush.mp3"
+mp3: "http://episodes.birdcallreview.com/10-great-blue-heron.mp3"
 filesize: 39666786
 duration: 2451
 categories:
