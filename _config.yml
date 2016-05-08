@@ -5,11 +5,16 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+# Included gems
+gems: [jekyll-paginate]
+
 # Site settings
 title: Bird Call Review
 email: 
 description: Bird calls are incredibly diverse. But are they all good? Are some just okay? Can a bird call be sexy? Let's find out.
 baseurl: ""
+paginate: 5
+paginate_path: "/:num/"
 url: "http://birdcallreview.com"
 twitter_username: birdcallreview
 

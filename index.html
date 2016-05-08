@@ -5,7 +5,7 @@ layout: default
 <div class="home bs-s bw-0 btw-1p bc-l.8">
 
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
       <li class="p-1 pt-3 bs-s bw-0 bbw-1p bc-l.8">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
@@ -23,5 +23,17 @@ layout: default
       </li>
     {% endfor %}
   </ul>
+
+  <div class="ta-c">
+    <p>You're on page {{ paginator.page }} of {{ paginator.total_pages }}</p>
+    <p class="px_1 py_.5">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="c-red ff-bold bc-lightgrey bs-s bw-1p bs-3p d-ib">&laquo; Newer Shows</a>
+      {% endif %}
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="c-red ff-bold bc-lightgrey bs-s bw-1p bs-3p d-ib">Older Shows &raquo;</a>
+      {% endif %}
+    </p>
+  </div>
 
 </div>
