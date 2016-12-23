@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Curl-Crested Manucode"
-date:   2016-10-28 12:00:00 -0800
+date:   2016-08-31 12:00:00 -0800
 mp3: "http://episodes.birdcallreview.com.s3.amazonaws.com/18-curl-crested-manucode.mp3"
 filesize: 67478475
 duration: 2808
