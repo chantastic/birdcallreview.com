@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Partridge"
-date:   2016-09-14 12:00:00 -0800
+date:   2017-01-04 12:00:00 -0800
 mp3: "http://episodes.birdcallreview.com.s3.amazonaws.com/20-partridge.mp3"
 filesize: 58024688
 duration: 2412
