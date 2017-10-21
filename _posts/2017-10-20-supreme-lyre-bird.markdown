@@ -3,8 +3,8 @@ layout: post
 title:  "Supreme Lyre Bird"
 date:   2017-10-20 12:00:00 -0800
 mp3: "http://episodes.birdcallreview.com.s3.amazonaws.com/21-supreme-lyre.mp3"
-filesize: 45437984
-duration: 1886
+filesize: 44882629
+duration: 1863
 categories:
 ---
 
