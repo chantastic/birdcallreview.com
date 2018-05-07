@@ -8,4 +8,4 @@ duration: 2486
 categories:
 ---
 
-Jeremy and Michael review the Eastern Bluebird (Mexican) and discuss quitting unexpectedly, masterbating at Panera bread, downline come ups, the Barnes and Noble library, marketing a leveled business, aggressive sanitization, leaving your underwear on, and how to tie a rubber band around your dick too tightly.
+Jeremy and Michael review the Eastern Bluebird (Mexican) and discuss quitting unexpectedly, masterbating at Panera bread, downline come ups, the Barnes and Noble library, marketing a leveled business, aggressive sanitization, leaving your underwear on, and tying too tightly.
