@@ -6,8 +6,8 @@
     <link>http://birdcallreview.com/</link>
     <language>en-us</language>
     <copyright>&#x2117; &amp; &#xA9; 2016 Jeremy Ricketts &amp; Michael Chan</copyright>
-    <pubDate>Mon, 07 May 2018 14:02:19 -0700</pubDate>
-    <lastBuildDate>Mon, 07 May 2018 14:02:19 -0700</lastBuildDate>
+    <pubDate>Thu, 09 Aug 2018 15:39:05 -0700</pubDate>
+    <lastBuildDate>Thu, 09 Aug 2018 15:39:05 -0700</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     <itunes:subtitle>Jeremy &amp; Michael Review Bird Calls</itunes:subtitle>
     <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
@@ -21,6 +21,24 @@
       <itunes:category text="Natural Sciences" />
     </itunes:category>
     <itunes:explicit>yes</itunes:explicit>
+    
+      <item>
+        <title>Hooded Oriole</title>
+        <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:summary><![CDATA[<p>Jeremy and Michael review the Hooded Oriole and discuss forgettable Star Wars sagas, why you never start sex with ducks, how many days god rested, the planned obsolescence of refrigeration, why thick requires shredded, Queer Eye reaching deep inside us, viral spectrum disorder, and some bullshit about being better humans (just skip it).</p>
+]]></itunes:summary>
+        <itunes:image href="http://birdcallreview.com/img/logo.png" />
+        <itunes:duration>2503</itunes:duration>
+        <enclosure url="http://episodes.birdcallreview.com.s3.amazonaws.com/23-hooded-oriole.mp3" length="60532092" type="audio/x-mp3" />
+        <description>&lt;p&gt;Jeremy and Michael review the Hooded Oriole and discuss forgettable Star Wars sagas, why you never start sex with ducks, how many days god rested, the planned obsolescence of refrigeration, why thick requires shredded, Queer Eye reaching deep inside us, viral spectrum disorder, and some bullshit about being better humans (just skip it).&lt;/p&gt;
+</description>
+        <pubDate>Thu, 09 Aug 2018 13:00:00 -0700</pubDate>
+        <link>http://birdcallreview.com/hooded-oriole</link>
+        <guid isPermaLink="true">http://birdcallreview.com/hooded-oriole</guid>
+        
+        
+      </item>
     
       <item>
         <title>Eastern Bluebird (Mexican)</title>
