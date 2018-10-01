@@ -6,8 +6,8 @@
     <link>http://birdcallreview.com/</link>
     <language>en-us</language>
     <copyright>&#x2117; &amp; &#xA9; 2016 Jeremy Ricketts &amp; Michael Chan</copyright>
-    <pubDate>Thu, 09 Aug 2018 15:39:05 -0700</pubDate>
-    <lastBuildDate>Thu, 09 Aug 2018 15:39:05 -0700</lastBuildDate>
+    <pubDate>Mon, 01 Oct 2018 15:16:06 -0700</pubDate>
+    <lastBuildDate>Mon, 01 Oct 2018 15:16:06 -0700</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     <itunes:subtitle>Jeremy &amp; Michael Review Bird Calls</itunes:subtitle>
     <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
@@ -21,6 +21,24 @@
       <itunes:category text="Natural Sciences" />
     </itunes:category>
     <itunes:explicit>yes</itunes:explicit>
+    
+      <item>
+        <title>Amazonian Grozbeak</title>
+        <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:summary><![CDATA[<p>Jeremy and Michael review the Amazonian Grosbeak and discuss why birds risk death for sex, Mel Gibson, how to #bebest, the one-eyed monster pinstripe, teeny-tiny pink slips, marital blisters, solitary refinement, hard and deep christianity, her emails, back to school gifts, and fake  juvenile marriages.</p>
+]]></itunes:summary>
+        <itunes:image href="http://birdcallreview.com/img/logo.png" />
+        <itunes:duration>2575</itunes:duration>
+        <enclosure url="http://episodes.birdcallreview.com.s3.amazonaws.com/24-amazonian-grosbeak.mp3" length="41332871" type="audio/x-mp3" />
+        <description>&lt;p&gt;Jeremy and Michael review the Amazonian Grosbeak and discuss why birds risk death for sex, Mel Gibson, how to #bebest, the one-eyed monster pinstripe, teeny-tiny pink slips, marital blisters, solitary refinement, hard and deep christianity, her emails, back to school gifts, and fake  juvenile marriages.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 01 Oct 2018 13:00:00 -0700</pubDate>
+        <link>http://birdcallreview.com/amazonian-grosbeak</link>
+        <guid isPermaLink="true">http://birdcallreview.com/amazonian-grosbeak</guid>
+        
+        
+      </item>
     
       <item>
         <title>Hooded Oriole</title>
