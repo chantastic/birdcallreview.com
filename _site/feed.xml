@@ -6,8 +6,8 @@
     <link>http://birdcallreview.com/</link>
     <language>en-us</language>
     <copyright>&#x2117; &amp; &#xA9; 2016 Jeremy Ricketts &amp; Michael Chan</copyright>
-    <pubDate>Mon, 01 Oct 2018 15:16:06 -0700</pubDate>
-    <lastBuildDate>Mon, 01 Oct 2018 15:16:06 -0700</lastBuildDate>
+    <pubDate>Fri, 24 May 2019 15:16:39 -0700</pubDate>
+    <lastBuildDate>Fri, 24 May 2019 15:16:39 -0700</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     <itunes:subtitle>Jeremy &amp; Michael Review Bird Calls</itunes:subtitle>
     <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
@@ -21,6 +21,24 @@
       <itunes:category text="Natural Sciences" />
     </itunes:category>
     <itunes:explicit>yes</itunes:explicit>
+    
+      <item>
+        <title>Mountain Blue Bird</title>
+        <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:summary><![CDATA[<p>Jeremy and Michael review the Mountain Blue Bird and discuss the tiny balls of male planes, New Portland, shit as a collective problem, banality, spray-tan factory work, meth addict Bill Murrey, meet-up sex, fight shlub, and explaination-free detergent.</p>
+]]></itunes:summary>
+        <itunes:image href="http://birdcallreview.com/img/logo.png" />
+        <itunes:duration>2367</itunes:duration>
+        <enclosure url="http://episodes.birdcallreview.com.s3.amazonaws.com/25-mountain-blue-bird.mp3" length="38084682" type="audio/x-mp3" />
+        <description>&lt;p&gt;Jeremy and Michael review the Mountain Blue Bird and discuss the tiny balls of male planes, New Portland, shit as a collective problem, banality, spray-tan factory work, meth addict Bill Murrey, meet-up sex, fight shlub, and explaination-free detergent.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 24 May 2019 13:00:00 -0700</pubDate>
+        <link>http://birdcallreview.com/mountain-blue-bird</link>
+        <guid isPermaLink="true">http://birdcallreview.com/mountain-blue-bird</guid>
+        
+        
+      </item>
     
       <item>
         <title>Amazonian Grozbeak</title>
