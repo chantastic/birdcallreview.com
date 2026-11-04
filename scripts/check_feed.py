@@ -29,7 +29,22 @@ NS = {
 ENCLOSURE = re.compile(
     r'<enclosure url="([^"]+)" length="([^"]+)" type="([^"]+)" />'
 )
+TRANSCRIPT_TURN = re.compile(r"^\*\*\[\d{2}:\d{2}:\d{2}\] [^:]+:\*\*\s+(.+)$")
 ITEM_SUBTITLE = re.compile(r"<itunes:subtitle></itunes:subtitle>")
+
+
+def leaked_transcript(page: str, slug: str) -> str | None:
+    path = ROOT / "transcripts" / f"{slug}.md"
+    if not path.exists():
+        return None
+    for line in path.read_text().splitlines():
+        match = TRANSCRIPT_TURN.match(line)
+        if not match:
+            continue
+        text = match.group(1).strip()
+        if len(text) >= 24 and text in page:
+            return text
+    return None
 
 
 def fail(message: str) -> int:
@@ -185,8 +200,13 @@ def main() -> int:
             return fail(f"{slug} is missing the audio player or R2 source")
         if 'controls' not in page or "episode-audio" not in page:
             return fail(f"{slug} dropped the native audio controls")
-        if 'class="transcript"' not in page or 'href="#t=' not in page or "Copy link" not in page:
-            return fail(f"{slug} transcript is missing from the static HTML")
+        if 'class="transcript"' in page or "transcript-turn" in page or "transcript-text" in page:
+            return fail(f"{slug} still publishes a transcript")
+        leaked = leaked_transcript(page, slug)
+        if leaked:
+            return fail(f"{slug} publishes transcript text")
+        if 'class="copy-now"' not in page or 'class="play-from"' not in page:
+            return fail(f"{slug} is missing the timestamp controls")
         if "jsdelivr" in page or "cdn.jsdelivr.net" in page:
             return fail(f"{slug} loads the player from a CDN")
         for tag in ("author", "summary", "image", "duration"):
