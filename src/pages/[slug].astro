@@ -43,11 +43,13 @@ const turns = loadTranscript(episode.id, episode.data.speakers);
           <div class="post-content ff-sans" itemprop="articleBody">
             <Fragment set:html={episodeHtml(episode.body)} />
             <EpisodePlayer title={episode.data.title} src={playbackUrl(episode.data.audio)} path={`/${episode.id}`} />
-            <p class="play-from-row">
+            <div class="play-from-row">
               <button type="button" class="play-from" hidden>
                 Play from <span class="play-from-label"></span>
               </button>
-            </p>
+              <button type="button" class="copy-moment" hidden>Copy link</button>
+              <span class="copy-status visually-hidden" aria-live="polite"></span>
+            </div>
             <Transcript turns={turns} />
           </div>
           <script>

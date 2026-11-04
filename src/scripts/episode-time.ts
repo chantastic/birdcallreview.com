@@ -24,26 +24,6 @@ function turnAt(seconds: number): HTMLElement | null {
   return match ?? list[0] ?? null;
 }
 
-let toastTimer = 0;
-
-function showToast(message: string) {
-  let toast = document.querySelector<HTMLElement>('.moment-toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.className = 'moment-toast';
-    toast.setAttribute('role', 'status');
-    toast.setAttribute('aria-live', 'polite');
-    toast.hidden = true;
-    document.body.append(toast);
-  }
-  toast.textContent = message;
-  toast.hidden = false;
-  window.clearTimeout(toastTimer);
-  toastTimer = window.setTimeout(() => {
-    toast.hidden = true;
-  }, 2400);
-}
-
 async function copyText(value: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(value);
@@ -73,10 +53,26 @@ function seek(audio: HTMLAudioElement, seconds: number) {
 function showPlayFrom(seconds: number) {
   const button = document.querySelector<HTMLButtonElement>('.play-from');
   const label = button?.querySelector('.play-from-label');
-  if (!button || !label) return;
-  label.textContent = labelFor(seconds);
-  button.hidden = false;
-  button.dataset.seconds = String(seconds);
+  const copy = document.querySelector<HTMLButtonElement>('.copy-moment');
+  const clock = labelFor(seconds);
+  if (button && label) {
+    label.textContent = clock;
+    button.hidden = false;
+    button.dataset.seconds = String(seconds);
+  }
+  if (copy) {
+    copy.hidden = false;
+    copy.dataset.seconds = String(seconds);
+    copy.textContent = 'Copy link';
+    copy.setAttribute('aria-label', `Copy link to ${clock}`);
+  }
+}
+
+function hidePlayBar() {
+  const playFrom = document.querySelector<HTMLButtonElement>('.play-from');
+  const copy = document.querySelector<HTMLButtonElement>('.copy-moment');
+  if (playFrom) playFrom.hidden = true;
+  if (copy) copy.hidden = true;
 }
 
 let active: HTMLElement | null = null;
@@ -123,26 +119,17 @@ function setupEpisodeTime() {
 
   const path = document.querySelector<HTMLElement>('[data-episode-path]')?.dataset.episodePath || location.pathname;
 
-  const note = document.querySelector('.transcript-note');
-  if (note) note.textContent = 'Choose a time to open that moment and copy a link to it.';
-
   document.querySelectorAll<HTMLAnchorElement>('a.transcript-time').forEach((link) => {
-    const start = Number(link.closest<HTMLElement>('.transcript-turn')?.dataset.start);
-    if (!Number.isNaN(start)) link.setAttribute('aria-label', `Play from ${labelFor(start)} and copy a link`);
-    link.addEventListener('click', async (event) => {
+    link.addEventListener('click', (event) => {
       const hash = link.hash.startsWith('#') ? link.hash.slice(1) : link.hash;
       if (!hash.startsWith('t=')) return;
       event.preventDefault();
-      const seconds = Number(link.closest<HTMLElement>('.transcript-turn')?.dataset.start);
-      if (Number.isNaN(seconds)) return;
       const url = new URL(location.href);
       url.searchParams.delete('t');
       url.hash = hash;
       history.pushState(null, '', url);
-      const copying = copyText(momentUrl(location.href, path, seconds));
-      cue(seconds, true);
-      const ok = await copying;
-      showToast(ok ? `Copied link to ${labelFor(seconds)}` : 'Could not copy the link');
+      const seconds = Number(link.closest<HTMLElement>('.transcript-turn')?.dataset.start);
+      if (!Number.isNaN(seconds)) cue(seconds, true);
     });
   });
 
@@ -151,7 +138,27 @@ function setupEpisodeTime() {
     const seconds = Number(playFrom.dataset.seconds);
     if (Number.isNaN(seconds)) return;
     cue(seconds, true);
-    playFrom.hidden = true;
+    hidePlayBar();
+  });
+
+  const copyMoment = document.querySelector<HTMLButtonElement>('.copy-moment');
+  copyMoment?.addEventListener('click', async () => {
+    const seconds = Number(copyMoment.dataset.seconds);
+    if (Number.isNaN(seconds)) return;
+    const url = momentUrl(location.href, path, seconds);
+    const ok = await copyText(url);
+    const status = document.querySelector('.play-from-row .copy-status');
+    if (status) status.textContent = ok ? `Copied link to ${labelFor(seconds)}.` : 'Could not copy the link.';
+    if (!ok) return;
+    const previous = 'Copy link';
+    copyMoment.textContent = 'Copied';
+    copyMoment.removeAttribute('aria-label');
+    window.setTimeout(() => {
+      if (copyMoment.textContent === 'Copied') {
+        copyMoment.textContent = previous;
+        copyMoment.setAttribute('aria-label', `Copy link to ${labelFor(seconds)}`);
+      }
+    }, 2000);
   });
 
   audio.addEventListener('timeupdate', () => highlight(audio.currentTime, false));
