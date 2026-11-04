@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'http://birdcallreview.com',
+  site: 'https://birdcallreview.com',
   trailingSlash: 'ignore',
   build: {
     format: 'file',
