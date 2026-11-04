@@ -645,7 +645,6 @@ audio-player:defined audio.episode-audio {
   margin-top: 0.55em; }
 
 .copy-now,
-.transcript-copy,
 .play-from {
   font-family: 'Lato', sans-serif;
   font-size: 0.85rem;
@@ -684,6 +683,31 @@ audio-player:defined audio.episode-audio {
 .play-from {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16); }
 
+.moment-toast {
+  position: fixed;
+  z-index: 6;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  max-width: min(28rem, calc(100% - 2rem));
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid #c52d2f;
+  border-radius: 4px;
+  background: #fff;
+  color: #222;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16); }
+
+.moment-toast[hidden] {
+  display: none; }
+
+body:has(.play-from:not([hidden])) .moment-toast {
+  bottom: 4.85rem; }
+
 .transcript {
   margin-top: 0.5em;
   font-family: 'Lato', sans-serif;
@@ -708,7 +732,7 @@ audio-player:defined audio.episode-audio {
 
 .transcript-turn {
   display: grid;
-  grid-template-columns: 4.2rem minmax(0, 1fr) auto;
+  grid-template-columns: 4.2rem minmax(0, 1fr);
   column-gap: 0.75rem;
   row-gap: 0.2rem;
   margin: 0 0 0.45rem;
@@ -750,12 +774,8 @@ audio-player:defined audio.episode-audio {
   text-transform: uppercase;
   color: #333; }
 
-.transcript-copy {
-  grid-column: 3;
-  grid-row: 1; }
-
 .transcript-text {
-  grid-column: 2 / -1;
+  grid-column: 2;
   grid-row: 2;
   margin: 0;
   font-size: 1.02rem;
@@ -764,9 +784,5 @@ audio-player:defined audio.episode-audio {
 @media screen and (max-width: 520px) {
   .transcript-turn {
     grid-template-columns: auto minmax(0, 1fr); }
-  .transcript-copy {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    justify-self: start; }
   .transcript-text {
     grid-column: 1 / -1; } }

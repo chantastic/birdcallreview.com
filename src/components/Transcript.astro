@@ -10,8 +10,7 @@ const { turns } = Astro.props;
 
 <details class="transcript" id="transcript">
   <summary>Transcript</summary>
-  <p class="copy-status visually-hidden" aria-live="polite"></p>
-  <p class="transcript-note">Each time opens that moment. Copy link keeps a URL you can share.</p>
+  <p class="transcript-note">Choose a time to open that moment.</p>
   <ol class="transcript-turns">
     {
       turns.map((turn) => (
@@ -26,9 +25,6 @@ const { turns } = Astro.props;
             {turn.label}
           </a>
           <span class="transcript-speaker">{turn.speaker}</span>
-          <button type="button" class="transcript-copy" data-seconds={turn.seconds} aria-label={`Copy link to ${turn.label}`}>
-            Copy link
-          </button>
           <p class="transcript-text">{turn.text}</p>
         </li>
       ))
