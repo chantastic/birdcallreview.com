@@ -47,6 +47,7 @@ export function rfc822Pacific(isoDate: string): string {
 function itemXml(episode: Episode): string {
   const html = episodeHtml(episode.body);
   const guid = `${LEGACY_PERMALINK_ORIGIN}/${episode.id}`;
+  const link = `${SITE_URL}/${episode.id}`;
   const enclosure = `${AUDIO_ORIGIN}/${episode.data.audio}`;
   return `      <item>
         <title>${xmlEscape(episode.data.title)}</title>
@@ -57,7 +58,7 @@ function itemXml(episode: Episode): string {
         <enclosure url="${enclosure}" length="${episode.data.bytes}" type="audio/mpeg" />
         <description>${xmlEscape(html)}</description>
         <pubDate>${rfc822Pacific(episode.data.date)}</pubDate>
-        <link>${guid}</link>
+        <link>${link}</link>
         <guid isPermaLink="true">${guid}</guid>
         
         
@@ -65,8 +66,9 @@ function itemXml(episode: Episode): string {
 }
 
 /**
- * GUIDs, item links, enclosure URLs, and lastBuildDate stay byte-for-byte
- * with the previous feed. The channel link, atom:link, and artwork use https.
+ * GUIDs, enclosure URLs, and lastBuildDate stay byte-for-byte with the
+ * previous feed. Item links use the https episode URL. The channel link,
+ * atom:link, and artwork use https too.
  * itunes:complete is omitted: the last episode is 2019-05-24, and the site
  * never says another episode will not be published.
  */

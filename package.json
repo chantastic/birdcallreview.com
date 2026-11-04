@@ -7,10 +7,13 @@
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/place-html.mjs",
     "preview": "wrangler dev",
     "deploy": "wrangler deploy",
-    "check": "python3 scripts/check_feed.py"
+    "check": "node_modules/esbuild/bin/esbuild scripts/check-time.ts --bundle --platform=node --format=esm --outfile=/tmp/bcr-check-time.mjs && node /tmp/bcr-check-time.mjs && python3 scripts/check_feed.py"
   },
   "devDependencies": {
     "astro": "^5.16.0",
     "wrangler": "^4.50.0"
+  },
+  "dependencies": {
+    "@videojs/html": "^10.3.0"
   }
 }

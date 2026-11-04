@@ -10,6 +10,8 @@ const episodes = defineCollection({
     bytes: z.number().int().positive(),
     duration: z.number().int().positive(),
     originalAudio: z.string().url(),
+    /** Optional display names for transcript labels, keyed by the raw speaker string. */
+    speakers: z.record(z.string(), z.string()).optional(),
   }),
 });
 
