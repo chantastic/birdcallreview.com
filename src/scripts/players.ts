@@ -11,7 +11,7 @@ function audioFor(button: Element): HTMLAudioElement | null {
 }
 
 function announce(button: Element, message: string, copied: boolean) {
-  const status = button.closest('.episode-player-block, .transcript')?.querySelector('.copy-status');
+  const status = button.closest('.episode-player-block')?.querySelector('.copy-status');
   if (status) status.textContent = message;
   if (!copied || !(button instanceof HTMLButtonElement)) return;
   const previous = button.textContent;

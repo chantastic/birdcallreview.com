@@ -8,22 +8,6 @@ function episodeAudio(): HTMLAudioElement | null {
   return audio instanceof HTMLAudioElement ? audio : null;
 }
 
-function turns(): HTMLElement[] {
-  return [...document.querySelectorAll<HTMLElement>('.transcript-turn')];
-}
-
-function turnAt(seconds: number): HTMLElement | null {
-  const list = turns();
-  let match: HTMLElement | null = null;
-  for (const turn of list) {
-    const start = Number(turn.dataset.start);
-    if (Number.isNaN(start)) continue;
-    if (start <= seconds) match = turn;
-    else break;
-  }
-  return match ?? list[0] ?? null;
-}
-
 async function copyText(value: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(value);
@@ -75,29 +59,10 @@ function hidePlayBar() {
   if (copy) copy.hidden = true;
 }
 
-let active: HTMLElement | null = null;
-
-function highlight(seconds: number, scroll: boolean) {
-  const turn = turnAt(seconds);
-  if (active && active !== turn) {
-    active.classList.remove('is-current');
-    active.removeAttribute('aria-current');
-  }
-  active = turn;
-  if (!active) return;
-  active.classList.add('is-current');
-  active.setAttribute('aria-current', 'true');
-  if (!scroll) return;
-  const details = document.querySelector('details.transcript');
-  if (details instanceof HTMLDetailsElement) details.open = true;
-  active.scrollIntoView({ block: 'center', behavior: 'smooth' });
-}
-
 function cue(seconds: number, play: boolean) {
   const audio = episodeAudio();
   if (!audio) return;
   seek(audio, seconds);
-  highlight(seconds, true);
   if (!play) {
     if (audio.paused) showPlayFrom(seconds);
     return;
@@ -114,24 +79,9 @@ function setupEpisodeTime() {
   windowRecord[FLAG] = true;
 
   const audio = episodeAudio();
-  const list = turns();
-  if (!audio || list.length === 0) return;
+  if (!audio) return;
 
   const path = document.querySelector<HTMLElement>('[data-episode-path]')?.dataset.episodePath || location.pathname;
-
-  document.querySelectorAll<HTMLAnchorElement>('a.transcript-time').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const hash = link.hash.startsWith('#') ? link.hash.slice(1) : link.hash;
-      if (!hash.startsWith('t=')) return;
-      event.preventDefault();
-      const url = new URL(location.href);
-      url.searchParams.delete('t');
-      url.hash = hash;
-      history.pushState(null, '', url);
-      const seconds = Number(link.closest<HTMLElement>('.transcript-turn')?.dataset.start);
-      if (!Number.isNaN(seconds)) cue(seconds, true);
-    });
-  });
 
   const playFrom = document.querySelector<HTMLButtonElement>('.play-from');
   playFrom?.addEventListener('click', () => {
@@ -160,9 +110,6 @@ function setupEpisodeTime() {
       }
     }, 2000);
   });
-
-  audio.addEventListener('timeupdate', () => highlight(audio.currentTime, false));
-  audio.addEventListener('seeked', () => highlight(audio.currentTime, false));
 
   const onHistory = () => {
     const seconds = timeFromUrl(new URL(location.href));

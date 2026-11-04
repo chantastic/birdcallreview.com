@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import EpisodePlayer from '../components/EpisodePlayer.astro';
-import Transcript from '../components/Transcript.astro';
 import {
   playbackUrl,
   displayDate,
@@ -13,7 +12,6 @@ import {
   truncate,
   xmlDateTime,
 } from '../lib/episodes';
-import { loadTranscript } from '../lib/transcript';
 
 export async function getStaticPaths() {
   const episodes = await loadEpisodes();
@@ -25,7 +23,6 @@ export async function getStaticPaths() {
 
 const { episode } = Astro.props;
 const description = truncate(plainText(episodeHtml(episode.body)));
-const turns = loadTranscript(episode.id, episode.data.speakers);
 ---
 
 <Base title={episode.data.title} description={description} canonicalPath={`/${episode.id}`}>
@@ -50,7 +47,6 @@ const turns = loadTranscript(episode.id, episode.data.speakers);
               <button type="button" class="copy-moment" hidden>Copy link</button>
               <span class="copy-status visually-hidden" aria-live="polite"></span>
             </div>
-            <Transcript turns={turns} />
           </div>
           <script>
             import '../scripts/episode-time';
