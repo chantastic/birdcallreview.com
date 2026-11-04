@@ -1,6 +1,6 @@
 ---
 import {
-  audioUrl,
+  playbackUrl,
   displayDate,
   episodeHtml,
   pageCount,
@@ -28,7 +28,7 @@ const pages = pageCount(total);
             <a class="post-link c-red ff-bold" href={`/${episode.id}`}>{episode.data.title}</a>
           </h2>
           <div class="ff-sans" set:html={episodeHtml(episode.body)} />
-          <audio src={audioUrl(episode.data.audio)} class="w-100%" controls="controls">
+          <audio src={playbackUrl(episode.data.audio)} class="w-100%" controls="controls" preload="metadata">
             Your browser does not support the <code>audio</code> element.
           </audio>
         </li>

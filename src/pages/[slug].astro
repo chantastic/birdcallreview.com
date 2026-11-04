@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import {
-  audioUrl,
+  playbackUrl,
   displayDate,
   episodeHtml,
   loadEpisodes,
@@ -38,7 +38,7 @@ const description = truncate(plainText(episodeHtml(episode.body)));
           </header>
           <div class="post-content ff-sans" itemprop="articleBody">
             <Fragment set:html={episodeHtml(episode.body)} />
-            <audio src={audioUrl(episode.data.audio)} controls="controls" class="w-100%">
+            <audio src={playbackUrl(episode.data.audio)} controls="controls" class="w-100%" preload="metadata">
               Your browser does not support the <code>audio</code> element.
             </audio>
           </div>
