@@ -6,10 +6,8 @@ export const SITE_TITLE = 'Bird Call Review';
 export const SITE_DESCRIPTION =
   "Bird calls are incredibly diverse. But are they all good? Are some just okay? Can a bird call be sexy? Let's find out.";
 export const AUDIO_ORIGIN = 'https://episodes.birdcallreview.com';
-// The R2 hostname does not resolve, and the bucket is empty. The public S3
-// bucket still serves every file over HTTPS, which is what the player needs
-// in order to read a duration.
-export const PLAYBACK_ORIGIN = 'https://s3.amazonaws.com/episodes.birdcallreview.com';
+// Players and feed enclosures share the R2 host. That host now serves every file.
+export const PLAYBACK_ORIGIN = AUDIO_ORIGIN;
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
