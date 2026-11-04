@@ -26,8 +26,6 @@ Audio: https://episodes.birdcallreview.com/BCR2.mp3
 
 **[00:00:55] Michael Chan:** Armigan.
 
-**[00:01:02] C:** Well,
-
 **[00:01:10] Michael Chan:** shit.
 
 **[00:01:10] Jeremy Ricketts:** Right? I mean, let's one more time just to—
