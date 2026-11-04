@@ -1,4 +1,5 @@
 ---
+import EpisodePlayer from './EpisodePlayer.astro';
 import {
   playbackUrl,
   displayDate,
@@ -28,9 +29,7 @@ const pages = pageCount(total);
             <a class="post-link c-red ff-bold" href={`/${episode.id}`}>{episode.data.title}</a>
           </h2>
           <div class="ff-sans" set:html={episodeHtml(episode.body)} />
-          <audio src={playbackUrl(episode.data.audio)} class="w-100%" controls="controls" preload="metadata">
-            Your browser does not support the <code>audio</code> element.
-          </audio>
+          <EpisodePlayer title={episode.data.title} src={playbackUrl(episode.data.audio)} path={`/${episode.id}`} />
         </li>
       ))
     }

@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  src: string;
+  path: string;
+}
+
+const { title, src, path } = Astro.props;
+---
+
+<div class="episode-player-block">
+  <audio-player class="episode-player" content-title={title}>
+    <audio-skin>
+      <audio class="episode-audio" controls preload="metadata" src={src} aria-label={`Audio for ${title}`}>
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+    </audio-skin>
+  </audio-player>
+  <div class="episode-player-actions">
+    <button type="button" class="copy-now" data-episode-path={path}>Copy link to this moment</button>
+    <p class="copy-status visually-hidden" aria-live="polite"></p>
+  </div>
+</div>
+
+<script>
+  import '../scripts/players';
+</script>

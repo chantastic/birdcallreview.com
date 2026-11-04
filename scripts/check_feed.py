@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Check dist/feed.xml against the Jekyll fixture.
 
-GUIDs, item links, enclosure URLs, and lastBuildDate must match the feed
-this build replaces. Enclosure URLs are the R2 host plus the historical
-filename. Other feed edits (https channel URLs, audio/mpeg, dropped empty
-subtitles) are reversed before a byte compare so nothing else drifts.
+GUIDs, enclosure URLs, and lastBuildDate must match the feed this build
+replaces. Item links are the https episode URL. Enclosure URLs are the R2
+host plus the historical filename. Those edits, plus https channel URLs,
+audio/mpeg, and dropped empty subtitles, are reversed before a byte compare.
 """
 
 import re
@@ -79,10 +79,14 @@ def main() -> int:
         old_url, old_name, old_len, old_type = old_row
         new_url, new_name, new_len, new_type = new_row
         expected_url = f"{AUDIO_ORIGIN}/{old_name}"
+        slug = new_guid.rsplit("/", 1)[-1]
+        expected_link = f"{SITE_ORIGIN}/{slug}"
         if new_guid != old_guid:
             return fail(f"guid changed [{index}]\n old={old_guid}\n new={new_guid}")
-        if new_link != old_link or new_link != new_guid:
-            return fail(f"item link changed [{index}]\n old={old_link}\n new={new_link}")
+        if new_link != expected_link:
+            return fail(f"item link [{index}] {new_link} expected {expected_link}")
+        if new_link == new_guid or new_link == old_link:
+            return fail(f"item link still matches the http guid {new_link}")
         if not new_guid.startswith(f"{LEGACY_ORIGIN}/"):
             return fail(f"guid left the legacy http permalink {new_guid}")
         if new_name != old_name or new_len != old_len:
@@ -173,8 +177,18 @@ def main() -> int:
         if not enclosure.attrib.get("length", "").isdigit():
             return fail("bad length")
         slug = guid.text.rsplit("/", 1)[-1]
-        if not (DIST / f"{slug}.html").exists():
+        episode_html = DIST / f"{slug}.html"
+        if not episode_html.exists():
             return fail(f"missing episode html {slug}")
+        page = episode_html.read_text()
+        if f'src="https://episodes.birdcallreview.com/' not in page or "<audio-player" not in page:
+            return fail(f"{slug} is missing the audio player or R2 source")
+        if 'controls' not in page or "episode-audio" not in page:
+            return fail(f"{slug} dropped the native audio controls")
+        if 'class="transcript"' not in page or 'href="#t=' not in page or "Copy link" not in page:
+            return fail(f"{slug} transcript is missing from the static HTML")
+        if "jsdelivr" in page or "cdn.jsdelivr.net" in page:
+            return fail(f"{slug} loads the player from a CDN")
         for tag in ("author", "summary", "image", "duration"):
             if item.find(f"{{{NS['itunes']}}}{tag}") is None:
                 return fail(f"missing itunes item {tag} {guid.text}")
