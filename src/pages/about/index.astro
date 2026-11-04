@@ -2,6 +2,12 @@
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { displayDate, loadEpisodes } from '../../lib/episodes';
+
+const episodes = await loadEpisodes();
+const ordered = [...episodes].sort((a, b) => a.data.date.localeCompare(b.data.date));
+const first = displayDate(ordered[0].data.date);
+const last = displayDate(ordered[ordered.length - 1].data.date);
 ---
 
 <Base title="About" canonicalPath="/about/">
@@ -13,13 +19,8 @@ import Footer from '../../components/Footer.astro';
           <h1 class="post-title">About</h1>
         </header>
         <div class="post-content">
-          <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="http://jekyllrb.com/">jekyllrb.com</a></p>
-          <p>You can find the source code for the Jekyll new theme at:
- /
-<a href="https://github.com/jglovier/jekyll-new">jekyll-new</a></p>
-          <p>You can find the source code for Jekyll at
- /
-<a href="https://github.com/jekyll/jekyll">jekyll</a></p>
+          <p>Bird calls are incredibly diverse. But are they all good? Are some just okay? Can a bird call be sexy? Let's find out.</p>
+          <p>Jeremy Ricketts &amp; Michael Chan. {episodes.length} episodes, from {first} through {last}.</p>
         </div>
       </article>
     </div>
