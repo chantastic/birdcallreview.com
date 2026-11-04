@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {
+  playbackUrl,
+  displayDate,
+  episodeHtml,
+  loadEpisodes,
+  plainText,
+  truncate,
+  xmlDateTime,
+} from '../lib/episodes';
+
+export async function getStaticPaths() {
+  const episodes = await loadEpisodes();
+  return episodes.map((episode) => ({
+    params: { slug: episode.id },
+    props: { episode },
+  }));
+}
+
+const { episode } = Astro.props;
+const description = truncate(plainText(episodeHtml(episode.body)));
+---
+
+<Base title={episode.data.title} description={description} canonicalPath={`/${episode.id}`}>
+  <Header />
+  <div class="page-content">
+    <div class="wrapper">
+      <article class="post bs-s bw-0 btw-1p bc-l.8" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="p-1 pt-3">
+          <header class="post-header">
+            <p class="post-meta m-0" style="margin-bottom: 9px">
+              <time datetime={xmlDateTime(episode.data.date)} itemprop="datePublished">{displayDate(episode.data.date)}</time>
+            </p>
+            <h2 class="post-title c-red ff-bold fs-24p" style="letter-spacing: 0" itemprop="name headline">{episode.data.title}</h2>
+          </header>
+          <div class="post-content ff-sans" itemprop="articleBody">
+            <Fragment set:html={episodeHtml(episode.body)} />
+            <audio src={playbackUrl(episode.data.audio)} controls="controls" class="w-100%" preload="metadata">
+              Your browser does not support the <code>audio</code> element.
+            </audio>
+          </div>
+        </div>
+        <div class="ta-c">
+          <a href="/" class="bs-s bw-1p bc-red bs-3p p-1 c-red mb-1 d-ib">All Episodes</a>
+        </div>
+      </article>
+    </div>
+  </div>
+  <Footer />
+</Base>
