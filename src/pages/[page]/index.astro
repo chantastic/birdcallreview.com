@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import EpisodeList from '../../components/EpisodeList.astro';
+import { episodesForPage, loadEpisodes, pageCount, pageHref } from '../../lib/episodes';
+
+export async function getStaticPaths() {
+  const episodes = await loadEpisodes();
+  const pages = pageCount(episodes.length);
+  return Array.from({ length: Math.max(0, pages - 1) }, (_, index) => {
+    const page = index + 2;
+    return { params: { page: String(page) }, props: { page } };
+  });
+}
+
+const { page } = Astro.props;
+const episodes = await loadEpisodes();
+const pageEpisodes = episodesForPage(episodes, page);
+---
+
+<Base canonicalPath={pageHref(page)}>
+  <Header />
+  <div class="page-content">
+    <div class="wrapper">
+      <EpisodeList episodes={pageEpisodes} page={page} total={episodes.length} />
+    </div>
+  </div>
+  <Footer />
+</Base>

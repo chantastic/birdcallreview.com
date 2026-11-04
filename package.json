@@ -1,0 +1,16 @@
+{
+  "name": "birdcallreview",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/place-html.mjs",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "python3 scripts/check_feed.py"
+  },
+  "devDependencies": {
+    "astro": "^5.16.0",
+    "wrangler": "^4.50.0"
+  }
+}
