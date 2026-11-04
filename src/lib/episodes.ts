@@ -1,7 +1,14 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export const PAGE_SIZE = 5;
-export const SITE_URL = 'http://birdcallreview.com';
+/** Canonical origin for pages, the feed self link, sitemap, and artwork. */
+export const SITE_URL = 'https://birdcallreview.com';
+/**
+ * Episode GUIDs and item permalinks stay on this historical origin.
+ * Changing them would make podcast clients treat the archive as new episodes.
+ */
+export const LEGACY_PERMALINK_ORIGIN = 'http://birdcallreview.com';
+export const ARTWORK_URL = `${SITE_URL}/img/logo.png`;
 export const SITE_TITLE = 'Bird Call Review';
 export const SITE_DESCRIPTION =
   "Bird calls are incredibly diverse. But are they all good? Are some just okay? Can a bird call be sexy? Let's find out.";

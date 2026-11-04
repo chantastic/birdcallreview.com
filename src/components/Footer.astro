@@ -1,3 +1,13 @@
+---
+import { loadEpisodes } from '../lib/episodes';
+
+const episodes = await loadEpisodes();
+const years = episodes.map((episode) => Number(episode.data.date.slice(0, 4)));
+const first = Math.min(...years);
+const last = Math.max(...years);
+const yearsLabel = first === last ? String(first) : `${first}\u2013${last}`;
+---
+
 <footer class="site-footer">
   <div class="wrapper ta-c">
     <p class="p-0">
@@ -6,6 +16,6 @@
       </span><a href="https://twitter.com/birdcallreview" class="c-red"><span class="username">@birdcallreview</span></a>
       - <a href="/credits" class="c-red">credits</a>
     </p>
-    <p class="c-l.8 p-0">&copy; 2016 Jeremy Ricketts &amp; Michael Chan</p>
+    <p class="c-l.8 p-0">&copy; {yearsLabel} Jeremy Ricketts &amp; Michael Chan</p>
   </div>
 </footer>

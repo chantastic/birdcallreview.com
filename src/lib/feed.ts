@@ -1,5 +1,7 @@
 import {
+  ARTWORK_URL,
   AUDIO_ORIGIN,
+  LEGACY_PERMALINK_ORIGIN,
   SITE_DESCRIPTION,
   SITE_TITLE,
   SITE_URL,
@@ -44,16 +46,15 @@ export function rfc822Pacific(isoDate: string): string {
 
 function itemXml(episode: Episode): string {
   const html = episodeHtml(episode.body);
-  const guid = `${SITE_URL}/${episode.id}`;
+  const guid = `${LEGACY_PERMALINK_ORIGIN}/${episode.id}`;
   const enclosure = `${AUDIO_ORIGIN}/${episode.data.audio}`;
   return `      <item>
         <title>${xmlEscape(episode.data.title)}</title>
         <itunes:author>Jeremy Ricketts &amp; Michael Chan</itunes:author>
-        <itunes:subtitle></itunes:subtitle>
         <itunes:summary><![CDATA[${html}]]></itunes:summary>
-        <itunes:image href="http://birdcallreview.com/img/logo.png" />
+        <itunes:image href="${ARTWORK_URL}" />
         <itunes:duration>${episode.data.duration}</itunes:duration>
-        <enclosure url="${enclosure}" length="${episode.data.bytes}" type="audio/x-mp3" />
+        <enclosure url="${enclosure}" length="${episode.data.bytes}" type="audio/mpeg" />
         <description>${xmlEscape(html)}</description>
         <pubDate>${rfc822Pacific(episode.data.date)}</pubDate>
         <link>${guid}</link>
@@ -64,8 +65,10 @@ function itemXml(episode: Episode): string {
 }
 
 /**
- * Channel metadata, including the historical build timestamp and Jekyll generator
- * string, is kept so the document matches the published feed except for enclosure URLs.
+ * GUIDs, item links, enclosure URLs, and lastBuildDate stay byte-for-byte
+ * with the previous feed. The channel link, atom:link, and artwork use https.
+ * itunes:complete is omitted: the last episode is 2019-05-24, and the site
+ * never says another episode will not be published.
  */
 export function buildFeed(episodes: Episode[]): string {
   const items = episodes.map(itemXml).join('\n    \n');
@@ -87,7 +90,7 @@ export function buildFeed(episodes: Episode[]): string {
       <itunes:name>Jeremy Ricketts &amp; Michael Chan</itunes:name>
       <itunes:email>mijoch+bcr@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:image href="http://birdcallreview.com/img/logo.png" />
+    <itunes:image href="${ARTWORK_URL}" />
     <itunes:category text="Science &amp; Medicine">
       <itunes:category text="Natural Sciences" />
     </itunes:category>
