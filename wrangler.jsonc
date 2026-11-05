@@ -9,6 +9,7 @@
       "enabled": true
     }
   },
+  "previews": {},
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
